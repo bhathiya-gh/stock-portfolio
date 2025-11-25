@@ -156,7 +156,7 @@ function renderCompanyTiles(stats) {
             </div>
             <div class="tile-stats">
                 <div class="tile-stat">
-                    <span class="tile-stat-label">Latest Price</span>
+                    <span class="tile-stat-label">Closing price in ${portfolioStats.range.end}</span>
                     <span class="tile-stat-value">$${latest.toFixed(2)}</span>
                 </div>
                 <div class="tile-stat">
@@ -216,6 +216,8 @@ function openCompanyModal(symbol) {
     
     // Update statistics
     document.getElementById('modal-latest').textContent = `$${stat.latest.toFixed(2)}`;
+    const closingDate = portfolioStats.range.end;
+    document.querySelector('#modal-latest').previousElementSibling.textContent = `Closing price in ${closingDate}`;
     document.getElementById('modal-mean').textContent = `$${stat.mean.toFixed(2)}`;
     document.getElementById('modal-min').textContent = `$${stat.min.toFixed(2)}`;
     document.getElementById('modal-max').textContent = `$${stat.max.toFixed(2)}`;
