@@ -74,10 +74,7 @@ async function loadStatsAndRenderDashboard() {
 
         // Display data period in overview
         if (portfolioStats.range && portfolioStats.range.start && portfolioStats.range.end) {
-            const periodElem = document.getElementById('data-period');
-            if (periodElem) {
-                periodElem.textContent = `Period: ${portfolioStats.range.start} to ${portfolioStats.range.end}`;
-            }
+
             // Update company subtitle with sampling period
             const subtitleElem = document.getElementById('company-subtitle');
             if (subtitleElem) {
