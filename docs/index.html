@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Stock Portfolio Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Australian Stock Portfolio Dashboard</h1>
+        <p>Major Banks, Mining & Energy Companies</p>
+    </header>
+    
+    <main>
+        <section id="overview">
+            <h2>Portfolio Overview</h2>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>Welcome to Australian Stock Portfolio Dashboard</h3>
+                    <p>This application is designed to help you track and analyze your interested stock prices from the Australian Securities Exchange (ASX). Our dashboard provides comprehensive insights into major Australian companies across Banking, Mining, and Energy sectors.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">📈</div>
+                            <div class="feature-content">
+                                <h4>Daily Updates</h4>
+                                <p>Stock prices and trends are updated daily to provide you with the most current market information</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h4>Detailed Statistics</h4>
+                                <p>Comprehensive statistical analysis including latest prices, averages, volatility, and performance metrics</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏢</div>
+                            <div class="feature-content">
+                                <h4>Major ASX Companies</h4>
+                                <p>Track Australia's biggest companies including CBA, BHP, Rio Tinto, and other market leaders</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-content">
+                                <h4>Interactive Analysis</h4>
+                                <p>Click on any company tile below to view detailed charts and in-depth statistical analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="combined-trends">
+            <h2>Stock Trends - All Companies</h2>
+            <div class="plot-switcher">
+                <button class="plot-btn active" onclick="showPlot('stock-trends')">Stock Prices</button>
+                <button class="plot-btn" onclick="showPlot('stock-trends-ma')">Stock Prices with Moving Average</button>
+                <button class="plot-btn" onclick="showPlot('fortnightly-ma')">Moving Average Only</button>
+            </div>
+            <div class="plot-container">
+                <img id="stock-trends-plot" class="plot-image active" src="plots/stock_trends.png" alt="Combined Stock Trends" />
+                <img id="stock-trends-ma-plot" class="plot-image" src="plots/stock_trends_with_ma.png" alt="Stock Trends with Moving Average" />
+                <img id="fortnightly-ma-plot" class="plot-image" src="plots/fortnightly_moving_average.png" alt="Fortnightly Moving Average" />
+            </div>
+        </section>
+
+        <section id="companies">
+            <h2>Company Tiles</h2>
+            <p class="section-subtitle">Click on a company to view detailed analysis</p>
+            <div class="company-tiles-grid" id="company-tiles">
+                <!-- Company tiles will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Company Detail Modal -->
+    <div id="company-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-company-name">Company Details</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="company-detail-grid">
+                    <div class="detail-plot">
+                        <h3>Price Trend</h3>
+                        <img id="modal-plot" src="" alt="Company Trend" />
+                    </div>
+                    <div class="detail-stats">
+                        <h3>Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <label>Latest Price</label>
+                                <span id="modal-latest" class="stat-value">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>Average Price</label>
+                                <span id="modal-mean" class="stat-value">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>Minimum Price</label>
+                                <span id="modal-min" class="stat-value">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>Maximum Price</label>
+                                <span id="modal-max" class="stat-value">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>Volatility (σ)</label>
+                                <span id="modal-sd" class="stat-value">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>Performance</label>
+                                <span id="modal-performance" class="stat-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Australian Stock Portfolio Dashboard</p>
+    </footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>

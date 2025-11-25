@@ -1,0 +1,1133 @@
+/* Australian Stock Portfolio Dashboard Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+
+header p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    color: #2a5298;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-bottom: 2px solid #e1e8f0;
+    padding-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: #666;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Portfolio Overview */
+.overview-content {
+    padding: 1rem 0;
+}
+
+.overview-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.intro-section h3 {
+    color: #2a5298;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.intro-section > p {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.intro-details h4 {
+    color: #2a5298;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.company-list {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #2a5298;
+    margin-bottom: 1.5rem;
+}
+
+.sector-group {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.sector-group strong {
+    color: #2a5298;
+    font-weight: 600;
+}
+
+.features-list ul {
+    list-style: none;
+    padding: 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid #2a5298;
+}
+
+.features-list li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.action-tiles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border-left: 4px solid #2a5298;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-item.clickable {
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.feature-item.clickable:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(42, 82, 152, 0.2);
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-color: #2a5298;
+}
+
+.feature-item.clickable::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(42, 82, 152, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.feature-item.clickable:hover::before {
+    left: 100%;
+}
+
+.feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+    border-radius: 50%;
+}
+
+.feature-content h4 {
+    color: #2a5298;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.feature-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.feature-link {
+    display: inline-block;
+    color: #2a5298;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.feature-item.clickable:hover .feature-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Plot Container */
+.plot-container {
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+}
+
+.plot-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Plot Switcher */
+.plot-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.plot-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #2a5298;
+    background: white;
+    color: #2a5298;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.plot-btn:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+}
+
+.plot-btn.active {
+    background: #2a5298;
+    color: white;
+    box-shadow: 0 2px 8px rgba(42, 82, 152, 0.3);
+}
+
+.plot-image {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.plot-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.plot-image.active {
+    display: block;
+}
+
+/* Company Tiles Grid */
+.company-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.company-tile {
+    background: #fff;
+    border: 2px solid #e1e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.company-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: #2a5298;
+}
+
+.company-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.company-tile:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.company-tile.finance::before {
+    background: #3498db;
+}
+
+.company-tile.mining::before {
+    background: #e67e22;
+}
+
+.company-tile.energy::before {
+    background: #e74c3c;
+}
+
+.tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.company-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2a5298;
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.company-symbol {
+    background: #e1e8f0;
+    color: #2a5298;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.tile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.tile-stat {
+    text-align: center;
+}
+
+.tile-stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+    word-wrap: break-word;
+}
+
+.tile-stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2a5298;
+    word-wrap: break-word;
+}
+
+.price-change {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.positive {
+    color: #28a745;
+}
+
+.negative {
+    color: #dc3545;
+}
+
+.category-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: white;
+    z-index: 10;
+}
+
+.category-badge.finance {
+    background: #3498db;
+}
+
+.category-badge.mining {
+    background: #e67e22;
+}
+
+.category-badge.energy {
+    background: #e74c3c;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    border: none;
+    padding: 0;
+    color: white;
+}
+
+.close-btn {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #ddd;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.company-detail-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+}
+
+.detail-plot h3,
+.detail-stats h3 {
+    color: #2a5298;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.detail-plot img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.detail-plot img:hover {
+    transform: scale(1.02);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #2a5298;
+}
+
+.stat-item label {
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #2a5298;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #2a5298;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    main {
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+    }
+    
+    .company-tiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 1.2rem;
+    }
+    
+    .company-tiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 3% auto;
+    }
+    
+    .company-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header p {
+        font-size: 0.95rem;
+    }
+    
+    main {
+        padding: 1rem 0.5rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+    }
+    
+    section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .overview-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .intro-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .intro-section > p {
+        font-size: 1rem;
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+    
+    .intro-details h4 {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .company-list,
+    .features-list ul {
+        padding: 1rem;
+    }
+    
+    .action-tiles {
+        gap: 1rem;
+    }
+    
+    .overview-text > p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .feature-icon {
+        align-self: center;
+        font-size: 1.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .feature-content h4 {
+        font-size: 1rem;
+    }
+    
+    .feature-content p {
+        font-size: 0.9rem;
+    }
+    
+    .portfolio-summary {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .summary-card {
+        padding: 1rem;
+    }
+    
+    .summary-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .summary-card p {
+        font-size: 0.85rem;
+    }
+    
+    .company-tiles-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .company-tile {
+        padding: 1.2rem;
+    }
+    
+    .tile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .company-name {
+        font-size: 1.1rem;
+    }
+    
+    .tile-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+    
+    .tile-stat-value {
+        font-size: 1rem;
+    }
+    
+    .category-badge {
+        position: static;
+        align-self: flex-start;
+        margin-top: 0.5rem;
+    }
+    
+    .modal-content {
+        width: 98%;
+        margin: 2% auto;
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        gap: 0.8rem;
+    }
+    
+    .stat-item {
+        padding: 0.6rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 1rem 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        font-size: 0.9rem;
+    }
+    
+    main {
+        padding: 0.8rem 0.3rem;
+    }
+    
+    section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .plot-switcher {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .plot-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .overview-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .overview-text > p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+    }
+    
+    .feature-item {
+        padding: 0.8rem;
+        gap: 0.6rem;
+    }
+    
+    .feature-icon {
+        font-size: 1.3rem;
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
+    }
+    
+    .feature-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .feature-content p {
+        font-size: 0.85rem;
+    }
+    
+    .portfolio-summary {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .summary-card {
+        padding: 0.8rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .summary-card h3 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    .summary-card p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    
+    .plot-container {
+        padding: 0.5rem;
+    }
+    
+    .company-tile {
+        padding: 1rem;
+    }
+    
+    .company-name {
+        font-size: 1rem;
+    }
+    
+    .company-symbol {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .tile-stats {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        margin-top: 0.8rem;
+    }
+    
+    .tile-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+    
+    .tile-stat-label {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    
+    .tile-stat-value {
+        font-size: 0.9rem;
+    }
+    
+    .modal-content {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .modal-header {
+        padding: 1rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.1rem;
+    }
+    
+    .close-btn {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    
+    .detail-plot h3,
+    .detail-stats h3 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .stats-grid {
+        gap: 0.6rem;
+    }
+    
+    .stat-item {
+        padding: 0.5rem;
+        border-left-width: 3px;
+    }
+    
+    .stat-item label {
+        font-size: 0.85rem;
+    }
+    
+    .stat-value {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .summary-card {
+        padding: 0.6rem;
+    }
+    
+    .summary-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .company-tile {
+        padding: 0.8rem;
+    }
+    
+    .tile-header {
+        gap: 0.3rem;
+    }
+    
+    .company-name {
+        font-size: 0.95rem;
+    }
+    
+    .tile-stat {
+        padding: 0.4rem;
+    }
+    
+    .tile-stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .tile-stat-value {
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-content {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .modal-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .company-detail-grid {
+        grid-template-columns: 2fr 1fr;
+        gap: 1rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .plot-container img,
+    .detail-plot img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Large screens optimization */
+@media (min-width: 1400px) {
+    main {
+        max-width: 1400px;
+    }
+    
+    .company-tiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    
+    .portfolio-summary {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1600px) {
+    .company-tiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    .modal-content {
+        max-width: 1200px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    header {
+        background: none;
+        color: black;
+        box-shadow: none;
+    }
+    
+    .modal,
+    .category-badge {
+        display: none;
+    }
+    
+    section {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .company-tile {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-top: 2px solid #2a5298;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
