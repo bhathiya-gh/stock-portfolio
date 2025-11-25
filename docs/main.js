@@ -71,7 +71,25 @@ async function loadStatsAndRenderDashboard() {
         const response = await fetch('plots/stats.json');
         portfolioStats = await response.json();
         console.log('Portfolio stats loaded:', Object.keys(portfolioStats).length, 'companies');
-        
+
+        // Display data period in overview
+        if (portfolioStats.range && portfolioStats.range.start && portfolioStats.range.end) {
+            const periodElem = document.getElementById('data-period');
+            if (periodElem) {
+                periodElem.textContent = `Period: ${portfolioStats.range.start} to ${portfolioStats.range.end}`;
+            }
+            // Update company subtitle with sampling period
+            const subtitleElem = document.getElementById('company-subtitle');
+            if (subtitleElem) {
+                subtitleElem.textContent = `Click on a company to view detailed analysis — the sampling period ${portfolioStats.range.start} to ${portfolioStats.range.end}`;
+            }
+            // Update trends subtitle with sampling period
+            const trendsSubtitleElem = document.getElementById('trends-subtitle');
+            if (trendsSubtitleElem) {
+                trendsSubtitleElem.textContent = `Sampling period: ${portfolioStats.range.start} to ${portfolioStats.range.end}`;
+            }
+        }
+
         // Debug: Check what sections are visible
         const sections = document.querySelectorAll('section');
         console.log('Found sections on page:');
@@ -80,15 +98,15 @@ async function loadStatsAndRenderDashboard() {
             const isVisible = section.offsetParent !== null;
             console.log(`Section ${index}: "${title}" - Visible: ${isVisible}`);
         });
-        
+
         // Render dashboard components (removed portfolio summary)
         renderCompanyTiles(portfolioStats);
-        
+
         // Make main plot images clickable
         setupMainPlotExpansion();
-        
+
         console.log('Dashboard rendering complete');
-        
+
     } catch (error) {
         console.error('Error loading data:', error);
         showError('Failed to load dashboard data');
@@ -118,19 +136,21 @@ function renderCompanyTiles(stats) {
     container.innerHTML = '';
     
     Object.keys(stats).forEach(symbol => {
+        // Skip non-company keys (like 'range')
+        if (!companyMeta[symbol]) return;
         const meta = companyMeta[symbol] || { name: symbol, category: 'Other' };
         const stat = stats[symbol];
-        
+
         // Calculate performance indicators
         const latest = stat.latest;
         const mean = stat.mean;
         const performance = ((latest - mean) / mean * 100);
         const isPositive = performance > 0;
-        
+
         const tile = document.createElement('div');
         tile.className = `company-tile ${meta.category.toLowerCase()}`;
         tile.onclick = () => openCompanyModal(symbol);
-        
+
         tile.innerHTML = `
             <div class="category-badge ${meta.category.toLowerCase()}">${meta.category}</div>
             <div class="tile-header">
@@ -158,7 +178,7 @@ function renderCompanyTiles(stats) {
                 </div>
             </div>
         `;
-        
+
         container.appendChild(tile);
     });
 }
@@ -176,6 +196,18 @@ function openCompanyModal(symbol) {
     
     // Update modal content
     document.getElementById('modal-company-name').textContent = `${meta.name} (${symbol})`;
+    // Show period in modal stats
+    const statsGrid = document.querySelector('.stats-grid');
+    if (statsGrid) {
+        let periodElem = document.getElementById('modal-period');
+        if (!periodElem) {
+            periodElem = document.createElement('div');
+            periodElem.className = 'stat-item';
+            periodElem.id = 'modal-period';
+            statsGrid.insertAdjacentElement('afterbegin', periodElem);
+        }
+        periodElem.innerHTML = `<label>Period</label><span class="stat-value">${stat.start} to ${stat.end}</span>`;
+    }
     const modalPlot = document.getElementById('modal-plot');
     modalPlot.src = `plots/${symbol}_trend.png`;
     modalPlot.alt = `${symbol} Stock Trend`;

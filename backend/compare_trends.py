@@ -122,11 +122,19 @@ save_individual_plots(df_for_plot, symbols, plots_dir)
 
 # Generate key stats for each stock and save as JSON and HTML table
 import json
+# Add start/end date range for the period
 stats = {}
+date_index = df_for_plot.index
+if hasattr(date_index, 'min') and hasattr(date_index, 'max'):
+    start_date = str(date_index.min().date())
+    end_date = str(date_index.max().date())
+    stats["range"] = {"start": start_date, "end": end_date}
 for symbol in symbols:
     if symbol in df_for_plot.columns:
         col = df_for_plot[symbol].dropna()
         stats[symbol] = {
+            "start": start_date,
+            "end": end_date,
             "latest": float(col.iloc[-1]) if len(col) > 0 else None,
             "mean": float(col.mean()) if len(col) > 0 else None,
             "min": float(col.min()) if len(col) > 0 else None,
