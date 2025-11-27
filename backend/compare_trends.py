@@ -132,10 +132,18 @@ if hasattr(date_index, 'min') and hasattr(date_index, 'max'):
 for symbol in symbols:
     if symbol in df_for_plot.columns:
         col = df_for_plot[symbol].dropna()
+        # Find the true latest date for this company (last non-NaN value)
+        if len(col) > 0:
+            latest_date = str(col.index[-1].date())
+            latest_value = float(col.iloc[-1])
+        else:
+            latest_date = None
+            latest_value = None
         stats[symbol] = {
             "start": start_date,
             "end": end_date,
-            "latest": float(col.iloc[-1]) if len(col) > 0 else None,
+            "latest": latest_value,
+            "latest_date": latest_date,
             "mean": float(col.mean()) if len(col) > 0 else None,
             "min": float(col.min()) if len(col) > 0 else None,
             "max": float(col.max()) if len(col) > 0 else None,
